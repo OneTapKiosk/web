@@ -5,7 +5,12 @@ import Providers from "./app/providers";
 function App() {
   const routing = useRoutes(routes);
 
-  return <Providers>{routing}</Providers>;
+  return (
+    <Providers>
+      {routing}
+    </Providers>
+  );
+
 }
 
 export default App;

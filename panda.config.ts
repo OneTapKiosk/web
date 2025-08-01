@@ -5,7 +5,10 @@ export default defineConfig({
   preflight: true,
 
   // Where to look for your css declarations
-  include: ["./src/**/*.{js,jsx,ts,tsx}", "./pages/**/*.{js,jsx,ts,tsx}"],
+  include: [
+    "./client/src/**/*.{js,jsx,ts,tsx}",
+    "./pages/**/*.{js,jsx,ts,tsx}",
+  ],
 
   // Files to exclude
   exclude: [],
@@ -13,6 +16,22 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {},
+  },
+
+  // Font
+  globalFontface: {
+    Pretendard: {
+      src: "url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');",
+      fontWeight: "400",
+      fontStyle: "normal",
+      fontDisplay: "swap",
+    },
+  },
+
+  globalCss: {
+    html: {
+      fontFamily: "Pretendard, sans-serif",
+    },
   },
 
   // The output directory for your css system

@@ -7,7 +7,11 @@ const routes: RouteObject[] = [
     children: [
       {
         path: "/",
-        element: <h2>Home Page</h2>
+        element: (
+          <div style={{ fontFamily: 'Pretendard', fontSize: '24px', fontWeight: 400 }}>
+            폰트 테스트: Pretendard가 잘 적용되었나요?
+          </div>
+        )
       }
     ]
   }
