@@ -13,7 +13,7 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "preload.ts"),
+      preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true, // 보안을 위해 false로 설정하는 것이 좋지만, 개발 편의상 true로 설정하는 경우가 있음
       contextIsolation: false, // 보안을 위해 true로 설정하는 것이 좋지만, 개발 편의상 false로 설정하는 경우가 있음
     },
