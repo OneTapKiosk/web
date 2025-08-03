@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
@@ -21,11 +20,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@styled-system/*": ["../styled-system/*"]
+    }
   },
-  "include": ["./src"],
-  "exclude": ["node_modules", "electron"],
-  "paths": {
-    "@/*": ["./src/*"]
-  }
+  "include": ["src", "../styled-system"],
+  "exclude": ["../node_modules", "../electron"],
 }
