@@ -5,14 +5,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config/
 export default defineConfig({
+  root: path.resolve(__dirname),
   plugins: [react(), tsconfigPaths()],
   build: {
     outDir: "../dist",
     emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, "../index.html"), // <--- index.html 경로
-      },
-    },
   },
 });

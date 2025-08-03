@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:react": "vite",
+    "dev:react": "vite --config client/vite.config.ts",
     "dev:electron": "yarn build:electron && electron .",
     "dev": "concurrently \"yarn dev:react\" \"yarn dev:electron\"",
-    "build:react": "tsc -p client/tsconfig.app.json && vite build",
+    "build:react": "tsc -p client/tsconfig.app.json && vite build --config client/vite.config.ts",
     "build:electron": "tsc --project electron/tsconfig.electron.json",
     "build": "concurrently \"yarn build:react\" \"yarn build:electron\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
