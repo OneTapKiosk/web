@@ -1,5 +1,5 @@
 import type { RouteObject } from "react-router";
-import { MainLayout } from "../layout/MainLayout";
+import MainLayout from "../layout/MainLayout";
 
 const routes: RouteObject[] = [
   {
