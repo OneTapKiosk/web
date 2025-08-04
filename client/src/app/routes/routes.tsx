@@ -1,5 +1,6 @@
 import type { RouteObject } from "react-router";
 import MainLayout from "../layout/MainLayout";
+import HomePage from "@/pages/HomePage";
 
 const routes: RouteObject[] = [
   {
@@ -7,11 +8,7 @@ const routes: RouteObject[] = [
     children: [
       {
         path: "/",
-        element: (
-          <div style={{ fontFamily: 'Pretendard', fontSize: '24px', fontWeight: 400 }}>
-            폰트 테스트: Pretendard가 잘 적용되었나요?
-          </div>
-        )
+        element: <HomePage />
       }
     ]
   }
