@@ -15,6 +15,7 @@
     "start": "concurrently \"yarn dev\" \"yarn electron:dev\""
   },
   "dependencies": {
+    "@chakra-ui/react": "^3.24.0",
     "@electron-toolkit/preload": "^3.0.2",
     "@electron-toolkit/utils": "^4.0.0",
     "@electron/remote": "^2.1.3",
