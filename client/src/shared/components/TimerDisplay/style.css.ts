@@ -10,6 +10,9 @@ export const Container = {
     color: "red.600",
     bg: "red.50",
     borderColor: "red.200",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
   }),
   orange: css({
     h: "full",
@@ -20,6 +23,9 @@ export const Container = {
     color: "orange.600",
     bg: "orange.50",
     borderColor: "orange.200",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
   }),
   blue: css({
     h: "full",
@@ -32,8 +38,16 @@ export const Container = {
     borderColor: "blue.200",
     display: "flex",
     justifyContent: "center",
+    flexDirection: "column",
   }),
 };
+
+export const LabelStyle = css({
+  fontSize: "xl",
+  fontWeight: "semibold",
+  textAlign: "center",
+  mb: 2,
+});
 
 export const FlexBoxStyle = css({
   display: "flex",

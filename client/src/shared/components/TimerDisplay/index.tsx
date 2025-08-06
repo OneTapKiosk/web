@@ -1,4 +1,4 @@
-import { Container, FlexBoxStyle, IconStyle, TimeTextStyle } from "./style.css";
+import { Container, FlexBoxStyle, IconStyle, LabelStyle, TimeTextStyle } from "./style.css";
 
 interface TimerDisplayProps {
   timeLeft: number;
@@ -13,6 +13,7 @@ export const TimerDisplay = ({ timeLeft }: TimerDisplayProps) => {
 
   return (
     <div className={getColorClass()}>
+      <div className={LabelStyle}>남은 시간</div>
       <div className={FlexBoxStyle}>
         <i className={`ri-time-line ${IconStyle}`} />
         <div>
