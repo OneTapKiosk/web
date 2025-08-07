@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { BarcodeScannerInstruction } from "./components/BarcodeScannerInstruction";
 import Cart, { type CartItem } from "./components/Cart";
-import { Header } from "./components/Header";
+import { Header } from "@/shared/components/Header"
 import { OrderPageContainer } from "./style.css";
 import { useState } from "react";
 import BottomSection from "./components/BottomSection";
@@ -55,7 +55,7 @@ const OrderPage = () => {
 
   return (
     <div className={OrderPageContainer}>
-      <Header />
+      <Header title="장바구니" backPath="/" />
       <BarcodeScannerInstruction />
       <Cart
         items={cartItems}
