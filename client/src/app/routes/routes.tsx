@@ -3,6 +3,7 @@ import MainLayout from "../layout/MainLayout";
 import HomePage from "@/pages/HomePage";
 import OrderPage from "@/pages/OrderPage";
 import ConfirmPage from "@/pages/ConfirmPage";
+import PaymentPage from "@/pages/PaymentPage";
 
 const routes: RouteObject[] = [
   {
@@ -19,6 +20,10 @@ const routes: RouteObject[] = [
       {
         path: "/confirm",
         element: <ConfirmPage />
+      },
+      {
+        path: "/payment",
+        element: <PaymentPage />
       }
     ]
   }
