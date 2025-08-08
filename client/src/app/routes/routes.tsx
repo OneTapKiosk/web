@@ -4,6 +4,7 @@ import HomePage from "@/pages/HomePage";
 import OrderPage from "@/pages/OrderPage";
 import ConfirmPage from "@/pages/ConfirmPage";
 import PaymentPage from "@/pages/PaymentPage";
+import CompletionPage from "@/pages/CompletionPage";
 
 const routes: RouteObject[] = [
   {
@@ -24,6 +25,10 @@ const routes: RouteObject[] = [
       {
         path: "/payment",
         element: <PaymentPage />
+      },
+      {
+        path: "/completion",
+        element: <CompletionPage />
       }
     ]
   }
