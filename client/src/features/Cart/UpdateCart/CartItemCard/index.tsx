@@ -1,4 +1,16 @@
-import { AmountButtonStyle, AmountControlsStyle, AmountDisplayStyle, Container, ContentStyle, ProductImageStyle, ProductInfoStyle, ProductNameStyle, ProductPriceStyle, TotalPriceContainer, TotalPriceTextStyle } from "./style.css";
+import {
+  AmountButtonStyle,
+  AmountControlsStyle,
+  AmountDisplayStyle,
+  Container,
+  ContentStyle,
+  ProductImageStyle,
+  ProductInfoStyle,
+  ProductNameStyle,
+  ProductPriceStyle,
+  TotalPriceBox,
+  TotalPriceTextStyle
+} from "./style.css";
 
 export interface CartItemCardProps {
   item: {
@@ -36,7 +48,7 @@ export const CartItemCard = ({ item, onAmountChange }: CartItemCardProps) => {
         </div>
 
         {/* Total Price */}
-        <div className={TotalPriceContainer}>
+        <div className={TotalPriceBox}>
           <p className={TotalPriceTextStyle}>₩{(item.price * item.amount).toLocaleString()}</p>
         </div>
       </div>

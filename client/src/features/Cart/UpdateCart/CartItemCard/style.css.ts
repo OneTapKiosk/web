@@ -64,7 +64,7 @@ export const AmountDisplayStyle = css({
   textAlign: "center",
 });
 
-export const TotalPriceContainer = css({
+export const TotalPriceBox = css({
   textAlign: "right",
 });
 
