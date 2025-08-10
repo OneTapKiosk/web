@@ -1,4 +1,4 @@
-import type { CartItem } from "@/pages/OrderPage/components/Cart";
+import type { CartItem } from "@/features/Cart/UpdateCart/CartItemList";
 import { Container, DetailStyle, ImageStyle, ItemStyle, MetaStyle, NameStyle, ColumnStyle, TitleStyle, TotalStyle } from "./style.css";
 
 export interface ProductListProps {

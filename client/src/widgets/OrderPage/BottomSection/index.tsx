@@ -7,7 +7,7 @@ export interface OrderSummaryProps {
   onConfirm: () => void;
 }
 
-const BottomSection = (props: OrderSummaryProps) => {
+export const BottomSection = (props: OrderSummaryProps) => {
   return (
     <div className={SummaryContainer}>
       <div className={SummaryLeftColumn}>
@@ -32,5 +32,3 @@ const BottomSection = (props: OrderSummaryProps) => {
     </div>
   );
 }
-
-export default BottomSection;

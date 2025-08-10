@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router";
-import { BarcodeScannerInstruction } from "./components/BarcodeScannerInstruction";
-import Cart, { type CartItem } from "./components/Cart";
+import { BarcodeScannerInstruction, BottomSection } from "@/widgets/OrderPage/index";
+import { CartItemList, type CartItem } from "@/features/Cart/index";
 import { Header } from "@/shared/components/Header"
 import { OrderPageContainer } from "./style.css";
 import { useState } from "react";
-import BottomSection from "./components/BottomSection";
 import { useTimer } from "@/shared/hooks/useTimer";
 
 const OrderPage = () => {
@@ -57,7 +56,7 @@ const OrderPage = () => {
     <div className={OrderPageContainer}>
       <Header title="장바구니" backPath="/" />
       <BarcodeScannerInstruction />
-      <Cart
+      <CartItemList
         items={cartItems}
         onAmountChange={updateAmount}
       />

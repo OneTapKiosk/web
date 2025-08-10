@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router";
 import { ConfirmPageContainer, RowStyle } from "./style.css";
 import { useTimer } from "@/shared/hooks/useTimer";
-import type { CartItem } from "../OrderPage/components/Cart";
+import type { CartItem } from "../../features/Cart/UpdateCart/CartItemList";
 import { Header } from "@/shared/components/Header";
 import { OrderSummary } from "./components/OrderSummary";
 import ProductList from "./components/ProductList";
