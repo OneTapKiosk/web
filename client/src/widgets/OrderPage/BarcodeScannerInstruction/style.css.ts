@@ -6,7 +6,7 @@ export const Container = css({
   borderColor: "blue.400",
   w: "full",
   p: "6",
-  m: "8",
+  mb: "8",
 });
 
 export const TitleStyle = css({

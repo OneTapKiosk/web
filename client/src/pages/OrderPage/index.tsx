@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { BarcodeScannerInstruction, BottomSection } from "@/widgets/OrderPage/index";
 import { CartItemList, type CartItem } from "@/features/Cart/index";
 import { Header } from "@/shared/components/Header"
-import { OrderPageContainer } from "./style.css";
+import { Container, RowStyle } from "./style.css";
 import { useState } from "react";
 import { useTimer } from "@/shared/hooks/useTimer";
 
@@ -53,13 +53,15 @@ const OrderPage = () => {
   };
 
   return (
-    <div className={OrderPageContainer}>
+    <div className={Container}>
       <Header title="장바구니" backPath="/" />
-      <BarcodeScannerInstruction />
-      <CartItemList
-        items={cartItems}
-        onAmountChange={updateAmount}
-      />
+      <div className={RowStyle}>
+        <BarcodeScannerInstruction />
+        <CartItemList
+          items={cartItems}
+          onAmountChange={updateAmount}
+        />
+      </div>
       <BottomSection
         totalPrice={getTotalPrice()}
         timeLeft={timeLeft}

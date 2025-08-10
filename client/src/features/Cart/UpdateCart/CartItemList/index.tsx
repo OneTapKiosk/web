@@ -1,5 +1,5 @@
 import { CartItemCard } from '../CartItemCard';
-import { CartContainer, CartItem, EmptyCartContainer, EmptyCartSubtextStyle, EmptyCartTextStyle } from './style.css';
+import { CartContainer, EmptyCartContainer, EmptyCartSubtextStyle, EmptyCartTextStyle } from './style.css';
 import { stack } from '@styled-system/patterns';
 
 export type CartItem = {
