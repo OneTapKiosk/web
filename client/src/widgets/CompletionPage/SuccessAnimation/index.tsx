@@ -1,7 +1,7 @@
-import FloatingAnimation from "./FloatingAnimation";
+import FloatingAnimation from "../FloatingAnimation";
 import { Container, IconStyle, InnerCircleStyle, OuterCircleStyle } from "./style.css";
 
-const SuccessAnimation = () => {
+export const SuccessAnimation = () => {
   return (
     <div className={Container}>
       <div className={OuterCircleStyle}>
@@ -13,5 +13,3 @@ const SuccessAnimation = () => {
     </div>
   )
 }
-
-export default SuccessAnimation;

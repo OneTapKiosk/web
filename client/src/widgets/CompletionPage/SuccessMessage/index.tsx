@@ -1,6 +1,6 @@
 import { Container, SubtitleStyle, ThankYouStyle, TitleStyle } from "./style.css";
 
-const SuccessMessage = () => {
+export const SuccessMessage = () => {
   return (
     <div className={Container}>
       <h1 className={TitleStyle}>주문이 완료되었습니다!</h1>
@@ -9,5 +9,3 @@ const SuccessMessage = () => {
     </div>
   );
 }
-
-export default SuccessMessage;

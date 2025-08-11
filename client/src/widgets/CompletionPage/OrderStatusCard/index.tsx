@@ -1,6 +1,6 @@
 import { Container, HeadingStyle, IconStyle, TextStyle, WrapperStyle } from "./style.css";
 
-const OrderStatusCard = () => {
+export const OrderStatusCard = () => {
   return (
     <div className={Container}>
       <h3 className={HeadingStyle}>주문 상태</h3>
@@ -13,5 +13,3 @@ const OrderStatusCard = () => {
     </div>
   )
 }
-
-export default OrderStatusCard;

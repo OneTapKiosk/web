@@ -1,6 +1,6 @@
 import { Container, ThankYouLine1Style, ThankYouLine2Style } from "./style.css";
 
-const ThankYouMessage = () => {
+export const ThankYouMessage = () => {
   return (
     <div className={Container}>
       <p className={ThankYouLine1Style}>저희 매장을 이용해주셔서</p>
@@ -8,5 +8,3 @@ const ThankYouMessage = () => {
     </div>
   );
 }
-
-export default ThankYouMessage;
