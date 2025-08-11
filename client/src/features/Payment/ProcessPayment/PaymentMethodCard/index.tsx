@@ -10,7 +10,7 @@ export interface PaymentMethodCardProps {
   onSelect: (type: 'card' | 'cash') => void;
 }
 
-const PaymentMethodCard = ({
+export const PaymentMethodCard = ({
   type, title, description, instruction, iconClass, color, onSelect
 }: PaymentMethodCardProps) => {
   return (
@@ -34,5 +34,3 @@ const PaymentMethodCard = ({
     </div>
   )
 }
-
-export default PaymentMethodCard;

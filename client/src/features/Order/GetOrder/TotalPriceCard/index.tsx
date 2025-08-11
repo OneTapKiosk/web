@@ -4,7 +4,7 @@ export interface TotalPriceCardProps {
   totalPrice: number;
 }
 
-const TotalPriceCard = ({ totalPrice }: TotalPriceCardProps) => {
+export const TotalPriceCard = ({ totalPrice }: TotalPriceCardProps) => {
   return (
     <div className={Container}>
       <h2 className={TitleStyle}>결제 금액</h2>
@@ -13,5 +13,3 @@ const TotalPriceCard = ({ totalPrice }: TotalPriceCardProps) => {
     </div>
   );
 }
-
-export default TotalPriceCard;

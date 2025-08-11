@@ -4,7 +4,7 @@ export interface ProcessingProps {
   method: string;
 } 
 
-const Processing = ({ method }: ProcessingProps) => {
+export const Processing = ({ method }: ProcessingProps) => {
   return (
     <div className={Container}>
       <div className={SpinnerStyle}></div>
@@ -15,5 +15,3 @@ const Processing = ({ method }: ProcessingProps) => {
     </div>
   );
 }
-
-export default Processing;

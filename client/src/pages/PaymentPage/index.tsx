@@ -1,11 +1,10 @@
 import { Header } from "@/shared/components/Header";
 import { Container, PaymentMethodBox, RowStyle } from "./style.css";
-import TotalPriceCard from "./components/TotalPriceCard";
 import { useLocation, useNavigate } from "react-router";
-import PaymentMethodCard from "./components/PaymentMethodCard";
+import { PaymentMethodCard } from "@/features/Payment/index";
+import { TotalPriceCard } from "@/features/Order/index";
 import { useState } from "react";
-import Notice from "./components/Notice";
-import Processing from "./components/Processing";
+import { Notice, Processing } from "@/widgets/PaymentPage/index"
 
 const PaymentPage = () => {
   const navigate = useNavigate();

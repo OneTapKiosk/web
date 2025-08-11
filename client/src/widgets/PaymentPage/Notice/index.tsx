@@ -1,6 +1,6 @@
 import { Container, IconStyle, RowStyle, TitleStyle } from "./style.css";
 
-const Notice = () => {
+export const Notice = () => {
   return (
     <div className={Container}>
       <i className={IconStyle} />
@@ -15,5 +15,3 @@ const Notice = () => {
     </div>
   );
 }
-
-export default Notice;
