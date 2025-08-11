@@ -1,11 +1,7 @@
 import { useNavigate } from "react-router";
 import NewOrderButton from "./components/NewOrderButton";
-import OrderStatusCard from "./components/OrderStatusCard";
-import SuccessAnimation from "./components/SuccessAnimation";
-import SuccessMessage from "./components/SuccessMessage";
+import { AutoRedirectNotice, OrderStatusCard, SuccessAnimation, SuccessMessage, ThankYouMessage } from "@/widgets/CompletionPage/index";
 import { Container } from "./style.css";
-import AutoRedirectNotice from "./components/AutoRedirectNotice";
-import ThankYouMessage from "./components/ThankyouMessage";
 import { useEffect } from "react";
 
 const CompletionPage = () => {

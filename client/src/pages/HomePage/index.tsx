@@ -1,7 +1,5 @@
-import { useCreateCart } from "@/features/Cart/index"
-import { Instruction } from "./components/Instruction";
-import { StartButton } from "./components/StartButton";
-import WelcomeMessage from "./components/Welcome";
+import { useCreateCart, StartButton } from "@/features/Cart/index";
+import { Instruction, WelcomeMessage } from "@/widgets/HomePage/index"
 import * as s from "./style.css";
 import { useNavigate } from "react-router";
 
