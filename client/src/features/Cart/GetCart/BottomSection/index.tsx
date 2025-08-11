@@ -8,7 +8,7 @@ export interface BottomSectionProps {
   onBack: () => void;
 }
 
-const BottomSection = ({ totalPrice, timeLeft, onConfirm, onBack }: BottomSectionProps) => {
+export const BottomSection = ({ totalPrice, timeLeft, onConfirm, onBack }: BottomSectionProps) => {
   return (
     <div className={Container}>
       <div className={LeftColumn}>
@@ -41,5 +41,3 @@ const BottomSection = ({ totalPrice, timeLeft, onConfirm, onBack }: BottomSectio
     </div>
   );
 }
-
-export default BottomSection;

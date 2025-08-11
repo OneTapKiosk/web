@@ -3,10 +3,8 @@ import { ConfirmPageContainer, RowStyle } from "./style.css";
 import { useTimer } from "@/shared/hooks/useTimer";
 import type { CartItem } from "../../features/Cart/UpdateCart/CartItemList";
 import { Header } from "@/shared/components/Header";
-import { OrderSummary } from "./components/OrderSummary";
-import ProductList from "./components/ProductList";
-import { Notice } from "./components/Notice";
-import BottomSection from "./components/BottomSection";
+import { Notice } from "@/widgets/ConfirmPage/index";
+import { BottomSection, ProductList, OrderSummary } from "@/features/Cart/index"
 
 const ConfirmPage = () => {
   const navigate = useNavigate();

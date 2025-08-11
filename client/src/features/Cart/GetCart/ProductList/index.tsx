@@ -5,7 +5,7 @@ export interface ProductListProps {
   cartItems: CartItem[]
 }
 
-const ProductList = ({ cartItems }: ProductListProps) => {
+export const ProductList = ({ cartItems }: ProductListProps) => {
   return (
     <div className={Container}>
       <h3 className={TitleStyle}>상품 목록</h3>
@@ -33,5 +33,3 @@ const ProductList = ({ cartItems }: ProductListProps) => {
     </div>
   );  
 }
-
-export default ProductList;
