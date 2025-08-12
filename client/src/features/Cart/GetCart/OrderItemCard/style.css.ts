@@ -1,25 +1,6 @@
 import { css } from "@styled-system/css";
 
 export const Container = css({
-  bg: "white",
-  rounded: "2xl",
-  p: "8",
-  shadow: "sm",
-  w: "full",
-});
-
-export const TitleStyle = css({
-  textStyle: "2xl",
-  fontWeight: "bold",
-  color: "gray.800",
-  mb: "6",
-});
-
-export const ColumnStyle = css({
-  spaceY: "6",
-});
-
-export const ItemStyle = css({
   display: "flex",
   alignItems: "center",
   gap: "6",
@@ -38,8 +19,8 @@ export const ImageStyle = css({
   rounded: "xl",
 });
 
-export const DetailStyle = css({
-  flex: "1",
+export const InfoBox = css({
+  flex: 1,
 });
 
 export const NameStyle = css({
