@@ -1,14 +1,7 @@
+import type { CartItem } from '@/shared/types/cart';
 import { CartItemCard } from '../CartItemCard';
 import { CartContainer, EmptyCartContainer, EmptyCartSubtextStyle, EmptyCartTextStyle } from './style.css';
 import { stack } from '@styled-system/patterns';
-
-export type CartItem = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  amount: number;
-};
 
 interface CartProps {
   items: CartItem[];
