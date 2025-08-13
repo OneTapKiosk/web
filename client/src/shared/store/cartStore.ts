@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 interface CartState {
-  cartId: number | null;
-  setCartId: (id: number) => void;
+  cartId: string | null;
+  setCartId: (id: string) => void;
   resetCartId: () => void;
 }
 

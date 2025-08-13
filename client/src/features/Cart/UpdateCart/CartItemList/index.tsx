@@ -5,7 +5,7 @@ import { stack } from '@styled-system/patterns';
 
 interface CartProps {
   items: CartItem[];
-  onAmountChange: (id: number, newAmount: number) => void;
+  onAmountChange: (id: string, newAmount: number) => void;
 }
 
 export const CartItemList = ({ items, onAmountChange }: CartProps) => {

@@ -14,13 +14,13 @@ import {
 
 export interface CartItemCardProps {
   item: {
-    id: number;
+    id: string;
     name: string;
     price: number;
     imageUrl: string;
     quantity: number;
   },
-  onAmountChange: (id: number, newAmount: number) => void;
+  onAmountChange: (id: string, newAmount: number) => void;
 }
 
 export const CartItemCard = ({ item, onAmountChange }: CartItemCardProps) => {

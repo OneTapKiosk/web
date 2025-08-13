@@ -1,7 +1,7 @@
 import { Container, ImageStyle, InfoBox, MetaStyle, NameStyle, TotalStyle } from "./style.css";
 
 export interface OrderItemCardProps {
-  id: number;
+  id: string;
   name: string;
   imageUrl: string;
   price: number;

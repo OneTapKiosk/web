@@ -3,11 +3,11 @@ import apiInstance from "@/shared/api/config";
 import { useMutation } from "@tanstack/react-query";
 
 export interface CreateCartRequest {
-  kioskId: number;
+  kioskId: string;
 }
 
 export interface CreateCartResponse {
-  cartId: number;
+  cartId: string;
 }
 
 const createCart = async (body: CreateCartRequest) => {

@@ -11,10 +11,10 @@ const HomePage = () => {
   
   const handleStartClick = () => {
     createCart(
-      { kioskId: 304721601981714432 },
+      { kioskId: "304721601981714432" },
       {
         onSuccess: (data) => {
-          setCartId(data.data.cartId);              
+          setCartId(data.data!.cartId);              
           localStorage.setItem('sessionStartTime', Date.now().toString());
           localStorage.setItem('lastActivityTime', Date.now().toString());
           navigate("/order");
