@@ -6,9 +6,11 @@ import { stack } from '@styled-system/patterns';
 interface CartProps {
   items: CartItem[];
   onAmountChange: (id: string, newAmount: number) => void;
+  increaseQuantity: (id: string) => void;
+  decreaseQuantity: (id: string) => void;
 }
 
-export const CartItemList = ({ items, onAmountChange }: CartProps) => {
+export const CartItemList = ({ items, increaseQuantity, decreaseQuantity, onAmountChange }: CartProps) => {
   return (
     <div className={CartContainer}>
       {items.length === 0 ? (
@@ -20,7 +22,12 @@ export const CartItemList = ({ items, onAmountChange }: CartProps) => {
       ) : (
         <div className={stack({ gap: '6' })}>
           {items.map((item) => (
-            <CartItemCard item={item} onAmountChange={onAmountChange}/>
+            <CartItemCard
+              item={item}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+              onAmountChange={onAmountChange}
+            />
           ))}
         </div>
       )}

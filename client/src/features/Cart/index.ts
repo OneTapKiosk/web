@@ -6,3 +6,5 @@ export * from "./GetCart/OrderSummary";
 export * from "./GetCart/OrderItemList";
 export * from "./GetCart/OrderItemCard";
 export * from "./GetCart/useGetCart";
+export * from "./UpdateCart/useIncreaseItemQuantity";
+export * from "./UpdateCart/useDecreaseItemQuantity";
