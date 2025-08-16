@@ -1,18 +1,15 @@
 import { BackButton, HeaderContainer, RowStyle, Spacer, TitleText } from './style.css'
-import { useNavigate } from 'react-router'
 
 interface HeaderProps {
   title: string
-  backPath: string
+  handleBack: () => void
 }
 
-export const Header = ({ title, backPath = '/' }: HeaderProps) => {
-  const navigate = useNavigate()
-
+export const Header = ({ title, handleBack }: HeaderProps) => {
   return (
     <div className={HeaderContainer}>
       <div className={RowStyle}>
-        <button onClick={() => navigate(backPath)} className={BackButton}>
+        <button onClick={handleBack} className={BackButton}>
           <i className="ri-arrow-left-line" />
         </button>
         <h1 className={TitleText}>{title}</h1>

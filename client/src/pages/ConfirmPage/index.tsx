@@ -32,7 +32,7 @@ const ConfirmPage = () => {
 
   return (
     <div className={ConfirmPageContainer}>
-      <Header title="주문 확인" backPath="/order"/>
+      <Header title="주문 확인" handleBack={handleBack}/>
         <div className={RowStyle}>
           <OrderSummary getTotalQuantity={getTotalQuantity} getTotalPrice={getTotalPrice} />
           <OrderItemList cartItems={cartItems} />
