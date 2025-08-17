@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { BarcodeScannerInstruction, BottomSection } from "@/widgets/OrderPage/index";
-import { CartItemList, getCart, useIncreaseItemQuantity } from "@/features/Cart/index";
+import { CartItemList, getCart, useDecreaseItemQuantity, useDeleteCart, useIncreaseItemQuantity } from "@/features/Cart/index";
 import { Header } from "@/shared/components/Header"
 import { Container, RowStyle } from "./style.css";
 import { useEffect, useState } from "react";
@@ -10,6 +10,8 @@ import { useCartStore } from "@/shared/store/cartStore";
 
 const OrderPage = () => {
   const { mutate: increaseItemQuantity } = useIncreaseItemQuantity();
+  const { mutate: decreaseItemQuantity } = useDecreaseItemQuantity();
+  const { mutate: deleteCart } = useDeleteCart();
   const navigate = useNavigate();
   const { timeLeft } = useTimer();
   const [cartItems, setCartItems] = useState<CartItem[]>([
@@ -18,30 +20,55 @@ const OrderPage = () => {
       name: '바닐라 아이스크림',
       price: 3000,
       quantity: 0,
-      imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone%20with%20creamy%20white%20vanilla%20scoop%20on%20waffle%20cone%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20soft%20lighting%2C%20appetizing%20and%20fresh%20appearance&width=200&height=200&seq=vanilla-ice-cream&orientation=squarish'
+      imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone%20with%20creamy%20white%20vanilla%20scoop%20on%20waffle%20cone%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20soft%20lighting%2C%20appetizing%20and%20fresh%20appearance&width=200&height=200&seq=vanilla-ice-cream&orientation=squarish',
+      productId: '306503678276276224',
     },
     {
       id: '3',
       name: '초코 아이스크림',
       price: 2000,
       quantity: 2,
-      imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone%20with%20creamy%20white%20vanilla%20scoop%20on%20waffle%20cone%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20soft%20lighting%2C%20appetizing%20and%20fresh%20appearance&width=200&height=200&seq=vanilla-ice-cream&orientation=squarish'
+      imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone%20with%20creamy%20white%20vanilla%20scoop%20on%20waffle%20cone%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20soft%20lighting%2C%20appetizing%20and%20fresh%20appearance&width=200&height=200&seq=vanilla-ice-cream&orientation=squarish',
+      productId: '306503678276276224',
     },
   ]);
   const cartId = useCartStore((state) => state.cartId);
 
-  const handleIncreaseItemQuantity = (id: string) => {
-    setCartItems(cartItems.map(item =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-    ));
+  const handleBack = () => {
+    deleteCart({ cartId: cartId! });
+    navigate("/");
+  }
 
-    increaseItemQuantity({
+  const handleIncreaseItemQuantity = (id: string) => {
+  const selectedItem = cartItems.find(item => item.id === id);
+
+    if (selectedItem) {
+      setCartItems(cartItems.map(item =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      ));
+
+      increaseItemQuantity({
+        cartId: cartId!,
+        productId: selectedItem.productId,
+        name: selectedItem.name,
+        price: selectedItem.price,
+        quantity: selectedItem.quantity + 1,
+        imageUrl: selectedItem.imageUrl
+      });
+    }
+  }
+
+  const handleDecreaseItemQuantity = (cartItemId: string) => {
+    setCartItems(cartItems
+      .map(item =>
+        item.id === cartItemId ? { ...item, quantity: item.quantity - 1 } : item
+      )
+      .filter(item => item.quantity > 0)
+    );
+
+    decreaseItemQuantity({
       cartId: cartId!,
-      productId: cartItems[0].id,
-      name: cartItems[0].name,
-      price: 1500,
-      quantity: 2,
-      imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone%20with%20creamy%20white%20vanilla%20scoop%20on%20waffle%20cone%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20soft%20lighting%2C%20appetizing%20and%20fresh%20appearance&width=200&height=200&seq=vanilla-ice-cream&orientation=squarish'
+      cartItemId: cartItemId
     });
   }
 
@@ -61,15 +88,6 @@ const OrderPage = () => {
 
     fetchCart();
   }, [cartId]);
-
-  const decreaseQuantity = (id: string) => {
-    setCartItems(cartItems
-      .map(item =>
-        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-      )
-      .filter(item => item.quantity > 0)
-    );
-  }
 
   const updateQuantity = (id: string, newQuantity: number) => {
     if (newQuantity <= 0) {
@@ -91,13 +109,13 @@ const OrderPage = () => {
 
   return (
     <div className={Container}>
-      <Header title="장바구니" backPath="/" />
+      <Header title="장바구니" handleBack={handleBack} />
       <div className={RowStyle}>
         <BarcodeScannerInstruction />
         <CartItemList
           items={cartItems}
           increaseQuantity={handleIncreaseItemQuantity}
-          decreaseQuantity={decreaseQuantity}
+          decreaseQuantity={handleDecreaseItemQuantity}
           onAmountChange={updateQuantity}
         />
       </div>
