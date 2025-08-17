@@ -26,7 +26,7 @@ const increaseItemQuantity = async (req: IncreaseItemQuantityRequest) => {
       body
     );
   } catch (e) {
-    console.error("Error creating cart:", e);
+    console.error("장바구니 상품 수량 증가 실패", e);
     throw e;
   }
 };
