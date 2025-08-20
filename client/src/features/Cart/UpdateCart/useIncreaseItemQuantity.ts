@@ -11,6 +11,10 @@ export interface IncreaseItemQuantityRequest {
   productId: string;
 }
 
+export interface IncreaseItemQuantityResponse {
+  cartItemId: string;
+}
+
 const increaseItemQuantity = async (req: IncreaseItemQuantityRequest) => {
   try {
     const body = {
@@ -21,10 +25,11 @@ const increaseItemQuantity = async (req: IncreaseItemQuantityRequest) => {
       productId: req.productId,
     };
 
-    await apiInstance.post<BaseApiResponse<void>>(
-      `/cart/${req.cartId}/items`,
-      body
-    );
+    const response = await apiInstance.post<
+      BaseApiResponse<IncreaseItemQuantityResponse>
+    >(`/cart/${req.cartId}/items`, body);
+
+    return response.data.data;
   } catch (e) {
     console.error("장바구니 상품 수량 증가 실패", e);
     throw e;

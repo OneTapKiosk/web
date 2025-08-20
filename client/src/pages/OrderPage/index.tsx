@@ -22,15 +22,7 @@ const OrderPage = () => {
       quantity: 0,
       imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone%20with%20creamy%20white%20vanilla%20scoop%20on%20waffle%20cone%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20soft%20lighting%2C%20appetizing%20and%20fresh%20appearance&width=200&height=200&seq=vanilla-ice-cream&orientation=squarish',
       productId: '306503678276276224',
-    },
-    {
-      id: '3',
-      name: '초코 아이스크림',
-      price: 2000,
-      quantity: 2,
-      imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone%20with%20creamy%20white%20vanilla%20scoop%20on%20waffle%20cone%2C%20clean%20white%20background%2C%20professional%20product%20photography%2C%20soft%20lighting%2C%20appetizing%20and%20fresh%20appearance&width=200&height=200&seq=vanilla-ice-cream&orientation=squarish',
-      productId: '306503678276276224',
-    },
+    }
   ]);
   const cartId = useCartStore((state) => state.cartId);
 
@@ -39,24 +31,53 @@ const OrderPage = () => {
     navigate("/");
   }
 
-  const handleIncreaseItemQuantity = (id: string) => {
-  const selectedItem = cartItems.find(item => item.id === id);
+  const handleAddItem = () => {
+    const productId = "316983650866565120";
+    const existingItem = cartItems.find(item => item.productId === productId);
 
-    if (selectedItem) {
+    if (existingItem) {
       setCartItems(cartItems.map(item =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === existingItem.id ? { ...item, quantity: item.quantity + 1 } : item
       ));
 
       increaseItemQuantity({
         cartId: cartId!,
-        productId: selectedItem.productId,
-        name: selectedItem.name,
-        price: selectedItem.price,
-        quantity: selectedItem.quantity + 1,
-        imageUrl: selectedItem.imageUrl
+        productId: existingItem.productId,
+        name: existingItem.name,
+        price: existingItem.price,
+        quantity: existingItem.quantity + 1,
+        imageUrl: existingItem.imageUrl
+      });
+    } else {
+      const newItem: CartItem = {
+        id: "1",
+        name: '바닐라 아이스크림',
+        price: 1500,
+        quantity: 1,
+        imageUrl: 'https://readdy.ai/api/search-image?query=vanilla%20ice%20cream%20cone&width=200&height=200',
+        productId: productId,
+      };
+
+      setCartItems(prev => [...prev, newItem]);
+
+      increaseItemQuantity({
+        cartId: cartId!,
+        productId: newItem.productId,
+        name: newItem.name,
+        price: newItem.price,
+        quantity: newItem.quantity,
+        imageUrl: newItem.imageUrl,
+      }, {
+        onSuccess: (data) => {
+          if (!data) {
+            console.error("장바구니 아이템 추가 실패: 응답 데이터가 없습니다.");
+            return;
+          };
+          newItem.id = data.cartItemId;
+        }
       });
     }
-  }
+  };
 
   const handleDecreaseItemQuantity = (cartItemId: string) => {
     setCartItems(cartItems
@@ -114,11 +135,14 @@ const OrderPage = () => {
         <BarcodeScannerInstruction />
         <CartItemList
           items={cartItems}
-          increaseQuantity={handleIncreaseItemQuantity}
+          increaseQuantity={handleAddItem}
           decreaseQuantity={handleDecreaseItemQuantity}
           onAmountChange={updateQuantity}
         />
       </div>
+      <button onClick={handleAddItem}>
+        테스트 상품 추가
+      </button>
       <BottomSection
         totalPrice={getTotalPrice()}
         timeLeft={timeLeft}
