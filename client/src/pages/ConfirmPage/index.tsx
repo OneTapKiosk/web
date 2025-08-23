@@ -22,7 +22,7 @@ const ConfirmPage = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/order");
   }
 
   const handlePayment = () => {
