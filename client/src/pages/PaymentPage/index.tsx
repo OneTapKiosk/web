@@ -12,6 +12,10 @@ const PaymentPage = () => {
   const { totalPrice } = location.state || { totalPrice: 0 };
   const [selectedMethod, setSelectedMethod] = useState<string>('');
   const [processing, setProcessing] = useState(false);
+
+  const handleBack = () => {
+    navigate("/confirm");
+  }
   
   const handlePaymentSelect = (method: string) => {
     setSelectedMethod(method);
@@ -29,7 +33,7 @@ const PaymentPage = () => {
 
   return (
     <div className={Container}>
-      <Header title="결제 방법 선택" backPath="/confirm" />
+      <Header title="결제 방법 선택" handleBack={handleBack} />
       <div className={RowStyle}>
         <TotalPriceCard totalPrice={totalPrice} />
         <div className={PaymentMethodBox}>

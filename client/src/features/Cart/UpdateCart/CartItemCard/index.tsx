@@ -14,21 +14,23 @@ import {
 
 export interface CartItemCardProps {
   item: {
-    id: number;
+    id: string;
     name: string;
     price: number;
-    image: string;
-    amount: number;
+    imageUrl: string;
+    quantity: number;
   },
-  onAmountChange: (id: number, newAmount: number) => void;
+  onAmountChange: (id: string, newAmount: number) => void;
+  increaseQuantity: (id: string) => void;
+  decreaseQuantity: (id: string) => void;
 }
 
-export const CartItemCard = ({ item, onAmountChange }: CartItemCardProps) => {
+export const CartItemCard = ({ item, increaseQuantity, decreaseQuantity }: CartItemCardProps) => {
   return (
     <div className={Container}>
       <div className={ContentStyle}>
         {/* Product Image */}
-        <img src={item.image} alt={item.name} className={ProductImageStyle} />
+        <img src={item.imageUrl} alt={item.name} className={ProductImageStyle} />
 
         {/* Product Info */}
         <div className={ProductInfoStyle}>
@@ -38,18 +40,18 @@ export const CartItemCard = ({ item, onAmountChange }: CartItemCardProps) => {
 
         {/* Amount Controls */}
         <div className={AmountControlsStyle}>
-          <button onClick={() => onAmountChange(item.id, item.amount - 1)} className={AmountButtonStyle}>
+          <button onClick={() => decreaseQuantity(item.id)} className={AmountButtonStyle}>
             <i className="ri-subtract-line" />
           </button>
-          <span className={AmountDisplayStyle}>{item.amount}</span>
-          <button onClick={() => onAmountChange(item.id, item.amount + 1)} className={AmountButtonStyle}>
+          <span className={AmountDisplayStyle}>{item.quantity}</span>
+          <button onClick={() => increaseQuantity(item.id)} className={AmountButtonStyle}>
             <i className="ri-add-line" />
           </button>
         </div>
 
         {/* Total Price */}
         <div className={TotalPriceBox}>
-          <p className={TotalPriceTextStyle}>₩{(item.price * item.amount).toLocaleString()}</p>
+          <p className={TotalPriceTextStyle}>₩{(item.price * item.quantity).toLocaleString()}</p>
         </div>
       </div>
     </div>

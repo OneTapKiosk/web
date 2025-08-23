@@ -1,0 +1,53 @@
+import { css } from "@styled-system/css";
+
+export const Container = css({
+  bg: "white",
+  rounded: "2xl",
+  p: "8",
+  shadow: "sm",
+  w: "full",
+});
+
+export const TitleStyle = css({
+  textStyle: "2xl",
+  fontWeight: "bold",
+  color: "gray.800",
+  mb: "6",
+});
+
+export const ColumnStyle = css({
+  spaceY: "6",
+});
+
+export const ImageStyle = css({
+  w: "20",
+  h: "20",
+  objectFit: "cover",
+  rounded: "xl",
+});
+
+export const DetailStyle = css({
+  flex: "1",
+});
+
+export const NameStyle = css({
+  textStyle: "xl",
+  fontWeight: "semibold",
+  color: "gray.800",
+  mb: "1",
+});
+
+export const MetaStyle = css({
+  display: "flex",
+  alignItems: "center",
+  gap: "4",
+  textStyle: "lg",
+  color: "gray.600",
+});
+
+export const TotalStyle = css({
+  textAlign: "right",
+  textStyle: "xl",
+  fontWeight: "bold",
+  color: "gray.800",
+});

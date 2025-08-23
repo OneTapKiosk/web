@@ -1,18 +1,21 @@
+import type { BaseApiResponse } from "@/shared";
 import apiInstance from "@/shared/api/config";
 import { useMutation } from "@tanstack/react-query";
 
 export interface CreateCartRequest {
-  kioskId: number;
+  kioskId: string;
 }
 
 export interface CreateCartResponse {
-  message: string;
-  data: { cartId: number };
+  cartId: string;
 }
 
 const createCart = async (body: CreateCartRequest) => {
   try {
-    const response = await apiInstance.post<CreateCartResponse>("/cart", body);
+    const response = await apiInstance.post<
+      BaseApiResponse<CreateCartResponse>
+    >("/cart", body);
+
     return response.data;
   } catch (error) {
     console.error("Error creating cart:", error);

@@ -1,21 +1,16 @@
+import type { CartItem } from '@/shared/types/cart';
 import { CartItemCard } from '../CartItemCard';
 import { CartContainer, EmptyCartContainer, EmptyCartSubtextStyle, EmptyCartTextStyle } from './style.css';
 import { stack } from '@styled-system/patterns';
 
-export type CartItem = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  amount: number;
-};
-
 interface CartProps {
   items: CartItem[];
-  onAmountChange: (id: number, newAmount: number) => void;
+  onAmountChange: (id: string, newAmount: number) => void;
+  increaseQuantity: (id: string) => void;
+  decreaseQuantity: (id: string) => void;
 }
 
-export const CartItemList = ({ items, onAmountChange }: CartProps) => {
+export const CartItemList = ({ items, increaseQuantity, decreaseQuantity, onAmountChange }: CartProps) => {
   return (
     <div className={CartContainer}>
       {items.length === 0 ? (
@@ -27,7 +22,12 @@ export const CartItemList = ({ items, onAmountChange }: CartProps) => {
       ) : (
         <div className={stack({ gap: '6' })}>
           {items.map((item) => (
-            <CartItemCard item={item} onAmountChange={onAmountChange}/>
+            <CartItemCard
+              item={item}
+              increaseQuantity={increaseQuantity}
+              decreaseQuantity={decreaseQuantity}
+              onAmountChange={onAmountChange}
+            />
           ))}
         </div>
       )}
