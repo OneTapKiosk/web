@@ -5,8 +5,12 @@ import { Header } from "@/shared/components/Header";
 import { Notice } from "@/widgets/ConfirmPage/index";
 import { BottomSection, OrderItemList, OrderSummary } from "@/features/Cart/index"
 import type { CartItem } from "@/shared";
+import { useCreateOrder } from "@/features/Order";
+import { useOrderStore } from "@/shared/store/orderStore";
 
 const ConfirmPage = () => {
+  const { mutate: createOrder } = useCreateOrder();
+  const setOrderId = useOrderStore((state) => state.setOrderId);
   const navigate = useNavigate();
   const location = useLocation();
   const { timeLeft } = useTimer();
@@ -26,7 +30,23 @@ const ConfirmPage = () => {
   }
 
   const handlePayment = () => {
-    navigate('/payment', { state: { cartItems, totalPrice: getTotalPrice() } });
+    createOrder(
+      {
+        kioskId: "304721601981714432",
+        orderItems: cartItems.map(item => ({
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        }))
+      },
+      {
+        onSuccess: (data) => {
+          setOrderId(data.data!.orderId);
+          console.log(setOrderId);
+          navigate('/payment', { state: { cartItems, totalPrice: getTotalPrice() } });
+        },
+      }
+    );
   };
 
 
