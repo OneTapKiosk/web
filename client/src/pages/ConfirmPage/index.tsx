@@ -1,24 +1,32 @@
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { ConfirmPageContainer, RowStyle } from "./style.css";
 import { useTimer } from "@/shared/hooks/useTimer";
 import { Header } from "@/shared/components/Header";
 import { Notice } from "@/widgets/ConfirmPage/index";
-import { BottomSection, OrderItemList, OrderSummary } from "@/features/Cart/index"
+import { BottomSection, OrderItemList, OrderSummary, useGetCart } from "@/features/Cart/index"
 import type { CartItem } from "@/shared";
 import { useCreateOrder } from "@/features/Order";
 import { useOrderStore } from "@/shared/store/orderStore";
+import { useCartStore } from "@/shared/store/cartStore";
 
 const ConfirmPage = () => {
   const { mutate: createOrder } = useCreateOrder();
+  const cartId = useCartStore((state) => state.cartId);
+  const { data: cartData, isLoading: isLoadingCart, error: cartError } = useGetCart(cartId!);
   const setOrderId = useOrderStore((state) => state.setOrderId);
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
   const { timeLeft } = useTimer();
 
-  const cartItems = location.state?.cartItems as CartItem[] || [];
+  if (isLoadingCart) return <div>로딩 중...</div>;
+  if (cartError || !cartData) return <div>장바구니 정보를 불러오는 데 실패했습니다.</div>;
+
+  console.log("cartData:", cartData);
+
+  const cartItems = cartData.cartItems as CartItem[] || [];
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return cartData.totalPrice ?? 0;
   };
 
   const getTotalQuantity = () => {
@@ -42,13 +50,11 @@ const ConfirmPage = () => {
       {
         onSuccess: (data) => {
           setOrderId(data.data!.orderId);
-          console.log(setOrderId);
           navigate('/payment', { state: { cartItems, totalPrice: getTotalPrice() } });
         },
       }
     );
   };
-
 
   return (
     <div className={ConfirmPageContainer}>
