@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { BarcodeScannerInstruction, BottomSection } from "@/widgets/OrderPage/index";
-import { CartItemList, getCart, useDecreaseItemQuantity, useDeleteCart, useIncreaseItemQuantity } from "@/features/Cart/index";
+import { CartItemList, useDecreaseItemQuantity, useDeleteCart, useGetCart, useIncreaseItemQuantity } from "@/features/Cart/index";
 import { Header } from "@/shared/components/Header"
 import { Container, RowStyle } from "./style.css";
 import { useEffect, useState } from "react";
@@ -9,9 +9,11 @@ import type { CartItem } from "@/shared";
 import { useCartStore } from "@/shared/store/cartStore";
 
 const OrderPage = () => {
+  const cartId = useCartStore((state) => state.cartId);
   const { mutate: increaseItemQuantity } = useIncreaseItemQuantity();
   const { mutate: decreaseItemQuantity } = useDecreaseItemQuantity();
   const { mutate: deleteCart } = useDeleteCart();
+  const { data: cartData } = useGetCart(cartId!);
   const navigate = useNavigate();
   const { timeLeft } = useTimer();
   const [cartItems, setCartItems] = useState<CartItem[]>([
@@ -24,7 +26,6 @@ const OrderPage = () => {
       productId: '306503678276276224',
     }
   ]);
-  const cartId = useCartStore((state) => state.cartId);
 
   const handleBack = () => {
     deleteCart({ cartId: cartId! });
@@ -100,7 +101,6 @@ const OrderPage = () => {
         return;
       }
       try{
-        const cartData = await getCart({ cartId });
         if (cartData) setCartItems(cartData.cartItems);
       } catch(e) {
         console.error("장바구니 데이터를 불러오는 중 오류가 발생했습니다.", e);
@@ -108,7 +108,7 @@ const OrderPage = () => {
     }
 
     fetchCart();
-  }, [cartId]);
+  }, [cartData, cartId]);
 
   const updateQuantity = (id: string, newQuantity: number) => {
     if (newQuantity <= 0) {
